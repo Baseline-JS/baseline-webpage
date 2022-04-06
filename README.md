@@ -10,6 +10,13 @@ This is a simple React static site that is deployed to AWS.
 * Be able to deploy without a domain
 * Allow a dev and prod environment so work can be validated before releasing to prod
 
+## Lighthouse Desktop Scores
+
+![Lighthouse Performance](./assets/performance-100-brightgreen.svg)
+![Lighthouse Accessibility](./assets/accessibility-100-brightgreen.svg)
+![Lighthouse Best Practices](./assets/best-practices-100-brightgreen.svg)
+![Lighthouse SEO](./assets/SEO-100-brightgreen.svg)
+
 ## Local Requirements
 
 * [Yarn](https://classic.yarnpkg.com/en/docs/install)
