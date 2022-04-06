@@ -1,0 +1,127 @@
+service: baseline-marketing
+
+# Options
+# - region
+# - stage
+# Params
+# - profile
+
+frameworkVersion: ">=2.0.0 <4.0.0"
+
+plugins:
+  - serverless-s3-sync
+  - serverless-cloudfront-invalidate
+
+custom:
+  s3Bucket: ${param:profile}-${opt:stage}
+  s3Sync:
+    - bucketName: ${self:custom.s3Bucket}
+      localDir: build/
+  cloudfrontInvalidate:
+      - distributionIdKey: "CDNDistributionId"
+        items:
+          - "/*"
+
+provider:
+  stackName: ${param:profile}-${opt:stage} # Overwrite default CloudFormation stack name. Default is ${self:service}-${sls:stage}
+  name: aws
+  runtime: nodejs14.x
+  profile: ${param:profile} # force the profile parameter to be required
+  region: ${opt:region}
+  stage: ${opt:stage}
+
+# The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
+resources:
+  Description: ${param:profile} ${opt:stage}
+  Resources:
+    ## Specifying the S3 Bucket
+    WebsiteS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.s3Bucket}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+    ## Specifying the policies to make sure all files inside the Bucket are available to CloudFront
+    WebsiteS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: WebsiteS3Bucket
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action:
+                - s3:GetObject
+              Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+    ## Specifying the CloudFront Distribution to serve your Web Application
+    WebsiteCloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
+              ## An identifier for the origin which must be unique within the distribution
+              Id: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+              ## In case you want to restrict the bucket access use S3OriginConfig and remove CustomOriginConfig
+              # S3OriginConfig:
+              #   OriginAccessIdentity: origin-access-identity/cloudfront/E127EXAMPLE51Z
+          Enabled: true
+          ## [Custom Domain] Add the domain alias
+          # Aliases:
+          # - mysite.example.com
+          DefaultRootObject: /index.html
+          ## Since the Single Page App is taking care of the routing we need to make sure ever path is served with index.html
+          ## The only exception are files that actually exist e.h. app.js, reset.css
+          CustomErrorResponses:
+            - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - GET
+              - HEAD
+            CachedMethods:
+              - HEAD
+              - GET
+            Compress: true
+            DefaultTTL: 1800
+            MinTTL: 0
+            ## The origin id defined above
+            TargetOriginId: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
+            ## Defining if and how the QueryString and Cookies are forwarded to the origin which in this case is S3
+            ForwardedValues:
+              QueryString: false
+              Cookies:
+                Forward: none
+            ## The protocol that users can use to access the files in the origin. To allow HTTP use `allow-all`
+            ViewerProtocolPolicy: redirect-to-https
+          ## The certificate to use when viewers use HTTPS to request objects.
+          ViewerCertificate:
+            CloudFrontDefaultCertificate: true
+            ## [Custom Domain] Stop using the cloudfront default certificate, uncomment below and add ACM Certificate ARN
+            # CloudFrontDefaultCertificate: false
+            # ACMCertificateArn: "" # ARN of the AWS certificate
+            # MinimumProtocolVersion: "TLSv1.2_2021"
+          ## Uncomment the following section in case you want to enable logging for CloudFront requests
+          # Logging:
+          #   IncludeCookies: 'false'
+          #   Bucket: mylogs.s3.amazonaws.com
+          #   Prefix: myprefix
+
+  ## In order to print out the hosted domain via `serverless info` we need to define the DomainName output for CloudFormation
+  Outputs:
+    WebsiteCloudFrontDistributionOutput:
+      Value:
+        "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
+    CDNDistributionId:
+      Description: CDN distribution id.
+      Value:
+        Ref: WebsiteCloudFrontDistribution

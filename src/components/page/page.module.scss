@@ -1,0 +1,55 @@
+@use '../../styles/colors';
+@use '../../styles/layout';
+@import "../../styles/globals";
+
+.page {
+  .callToAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    color: colors.$black;
+    text-align: center;
+    background-color: colors.$white;
+
+    @media screen and (min-width: layout.$sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 25px;
+
+      @media screen and (max-width: layout.$sm) {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        padding-left: 1px; // Fix weird windows edge issue
+        object-fit: contain;
+        object-position: left;
+        vertical-align: unset;
+      }
+    }
+
+    .link {
+      transition: padding 250ms ease-in-out;
+
+      &:hover {
+        padding-right: 1ch;
+        color: colors.$black;
+      }
+
+      img {
+        width: 12px;
+        margin-left: 0.5ch;
+        padding-top: 2px;
+        transform: rotate(180deg);
+        filter: #{'invert()'};
+      }
+    }
+  }
+}

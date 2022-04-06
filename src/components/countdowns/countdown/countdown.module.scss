@@ -1,0 +1,74 @@
+@use '../../../styles/colors';
+@use '../../../styles/layout';
+@use '../../../styles/mixins';
+
+.countdown {
+  background-color: colors.$greyLight2;
+
+  &.fill {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .countdownContent {
+    display: flex;
+    max-width: 1375px;
+    margin: auto;
+    padding: 100px 32px;
+
+    @media screen and (max-width: layout.$md) {
+      flex-direction: column;
+    }
+
+    .copy {
+      display: flex;
+      flex: 0 0 50%;
+      flex-direction: column;
+      justify-content: center;
+
+      .index {
+        color: colors.$red;
+        font: normal normal bold 144px/188px 'Roboto', sans-serif;
+      }
+
+      h1 {
+        font: normal normal bold 44px/57px 'Roboto', sans-serif;
+      }
+
+      h2 {
+        margin-bottom: 45px;
+        color: colors.$grey;
+        font: normal normal bold 20px/27px 'Roboto', sans-serif;
+      }
+
+      .content {
+        p {
+          font: normal normal normal 16px/24px 'Roboto', sans-serif;
+        }
+
+        button {
+          @include mixins.arrowTextButton();
+
+          margin-top: 10px;
+          padding: unset;
+        }
+      }
+    }
+
+    .image {
+      display: flex;
+      flex: 1 1 50%;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 90%;
+        height: 100%;
+        padding-top: 32px;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+}

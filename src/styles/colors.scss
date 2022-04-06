@@ -1,0 +1,26 @@
+$black: #000;
+$greyDarker: #0f0f0f;
+$greyDark: #1c1c1c;
+$grey: #707070;
+$greyMid: #b8b8b8;
+$greyLight: #c9c9c9;
+$greyLight2: #f8f9fa;
+$greyLighter: #dedede;
+$greyLighter2: #ecedee;
+$white: #fff;
+$red: #be2230;
+$redMid: #ff4a60;
+$redLight: #ff4a60;
+
+:export {
+  black: $black;
+  greyDarker: $greyDarker;
+  grey: $grey;
+  greyMid: $greyMid;
+  greyLight: $greyLight;
+  greyLighter: $greyLighter;
+  white: $white;
+  red: $red;
+  redMid: $redMid;
+  redLight: $redLight;
+}

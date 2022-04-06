@@ -1,0 +1,34 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    '{main,prod}':
+      - step:
+          name: Deploy
+          size: 2x
+          script:
+            - touch ~/.bash_profile
+            - . ./scripts/setup-npm.sh
+            - . ./scripts/setup-aws.sh
+            - ./scripts/build.sh
+            - ./scripts/deploy.sh
+          caches:
+            - node
+            - yarn
+            - nodecustom
+    default:
+      - step:
+          name: Build
+          size: 2x
+          script:
+            - touch ~/.bash_profile
+            - . ./scripts/setup-nvm.sh
+            - ./scripts/build.sh
+          caches:
+            - node
+            - yarn
+
+definitions:
+  caches:
+    yarn: /usr/local/share/.cache/yarn
+    nodecustom: ./node_modules

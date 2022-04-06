@@ -1,0 +1,77 @@
+{
+  "name": "baseline-marketing",
+  "private": true,
+  "engines": {
+    "node": "14"
+  },
+  "scripts": {
+    "build": "NODE_OPTIONS=--max_old_space_size=8192 GENERATE_SOURCEMAP=false react-scripts build",
+    "start": "react-scripts start",
+    "deploy:dev": "yarn build && export AWS_PROFILE=baseline-marketing && yarn serverless deploy --stage dev --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
+    "remove:dev": "export AWS_PROFILE=baseline-marketing && yarn serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
+    "deploy:prod": "yarn build && export AWS_PROFILE=baseline-marketing && yarn serverless deploy --stage prod --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
+    "remove:prod": "export AWS_PROFILE=baseline-marketing && yarn serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
+    "rename": "./scripts/rename.sh",
+    "aws:profile": "./scripts/setup-aws-profile.sh baseline-marketing"
+  },
+  "dependencies": {
+    "@types/react-slick": "0.23.8",
+    "bootstrap": "5.1.3",
+    "formik": "2.2.9",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "4.3.1",
+    "react-router-dom": "6.2.1",
+    "react-scripts": "5.0.0",
+    "react-slick": "0.28.1",
+    "reactstrap": "9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.18",
+    "@types/react": "17.0.36",
+    "@types/react-dom": "17.0.11",
+    "@types/tryghost__content-api": "1.3.10",
+    "@typescript-eslint/eslint-plugin": "4.26.1",
+    "@typescript-eslint/parser": "4.26.1",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-flowtype": "5.7.2",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "postcss": "8.3.11",
+    "postcss-scss": "4.0.2",
+    "prettier": "2.4.1",
+    "sass": "1.43.4",
+    "save": "^2.4.0",
+    "serverless": "3.10.2",
+    "serverless-cloudfront-invalidate": "1.11.0",
+    "serverless-s3-sync": "3.0.0",
+    "stylelint": "13.13.1",
+    "stylelint-config-css-modules": "2.3.0",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-sass-guidelines": "9.0.1",
+    "stylelint-config-standard": "24.0.0",
+    "stylelint-config-standard-scss": "3.0.0",
+    "stylelint-order": "5.0.0",
+    "typescript": "4.5.2"
+  },
+  "resolutions": {
+    "colors": "1.4.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+@use './colors';
+@use './layout';
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0 !important;
+  color: colors.$black;
+  font-family: 'Roboto', sans-serif;
+  background-color: colors.$white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 52px;
+  font: normal normal 400 70px/94px 'Roboto', sans-serif;
+  letter-spacing: 0;
+
+  @media screen and (max-width: layout.$sm) {
+    margin-bottom: 42px;
+    font: normal normal 400 40px/45px 'Roboto', sans-serif;
+  }
+}
+
+h2 {
+  margin-bottom: 52px;
+  font: normal normal 700 22px/30px 'Roboto', sans-serif;
+
+  @media screen and (max-width: layout.$sm) {
+    margin-bottom: 42px;
+    font: normal normal 700 17px/25px 'Roboto', sans-serif;
+  }
+}
+
+p {
+  margin-bottom: 28px;
+  font: normal normal 400 22px/30px 'Roboto', sans-serif;
+
+  @media screen and (max-width: layout.$sm) {
+    margin-bottom: 23px;
+    font: normal normal 400 20px/28px 'Roboto', sans-serif;
+  }
+}
+
+ul,
+ol {
+  padding-left: 0;
+
+  li {
+    position: relative;
+    font: normal normal 400 22px/30px 'Roboto', sans-serif;
+
+    @media screen and (max-width: layout.$sm) {
+      margin-bottom: 23px;
+      font: normal normal 400 20px/28px 'Roboto', sans-serif;
+    }
+  }
+}
