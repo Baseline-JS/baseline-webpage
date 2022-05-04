@@ -1,5 +1,5 @@
 {
-  "name": "baseline-marketing",
+  "name": "baseline-webpage",
   "private": true,
   "engines": {
     "node": "14"
@@ -7,12 +7,12 @@
   "scripts": {
     "build": "NODE_OPTIONS=--max_old_space_size=8192 GENERATE_SOURCEMAP=false react-scripts build",
     "start": "react-scripts start",
-    "deploy:dev": "yarn build && export AWS_PROFILE=baseline-marketing && yarn serverless deploy --stage dev --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
-    "remove:dev": "export AWS_PROFILE=baseline-marketing && yarn serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
-    "deploy:prod": "yarn build && export AWS_PROFILE=baseline-marketing && yarn serverless deploy --stage prod --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
-    "remove:prod": "export AWS_PROFILE=baseline-marketing && yarn serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-marketing\"",
+    "deploy:dev": "yarn build && export AWS_PROFILE=baseline-webpage && yarn serverless deploy --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "remove:dev": "export AWS_PROFILE=baseline-webpage && yarn serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "deploy:prod": "yarn build && export AWS_PROFILE=baseline-webpage && yarn serverless deploy --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "remove:prod": "export AWS_PROFILE=baseline-webpage && yarn serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
     "rename": "./scripts/rename.sh",
-    "aws:profile": "./scripts/setup-aws-profile.sh baseline-marketing"
+    "aws:profile": "./scripts/setup-aws-profile.sh baseline-webpage"
   },
   "dependencies": {
     "@types/react-slick": "0.23.8",

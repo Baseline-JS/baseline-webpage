@@ -13,7 +13,7 @@ if [ "${BITBUCKET_BRANCH:-}" ]; then
 fi
 
 echo "Exporting env vars"
-export AWS_PROFILE="${AWS_PROFILE:-"baseline-marketing"}"
+export AWS_PROFILE="${AWS_PROFILE:-"baseline-webpage"}"
 echo "Profile: [$AWS_PROFILE]"
 
 export AWS_REGION="${AWS_REGION:-"ap-southeast-2"}"

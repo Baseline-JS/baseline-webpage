@@ -1,4 +1,4 @@
-# Baseline Marketing
+# Baseline Webpage
 
 This is a simple React static site that is deployed to AWS.
 
@@ -73,7 +73,7 @@ If you are using the BitBucket pipeline deployment then you will need to set the
 
 * AWS_ACCESS_KEY_ID = xxxx
 * AWS_SECRET_ACCESS_KEY = xxxx
-* PROFILE = baseline-marketing
+* PROFILE = baseline-webpage
 * REGION = ap-southeast-2
 
 Optionally these can be used if master and prod are in different accounts or the IAM roles have different access:
@@ -88,4 +88,4 @@ Optionally these can be used if master and prod are in different accounts or the
 If you would like to learn more about what we do please visit [Devika Baseline](https://devikabaseline.com/)
 
 ## License
-Baseline Marketing is [MIT licensed](./LICENSE).
+Baseline Webpage is [MIT licensed](./LICENSE).
