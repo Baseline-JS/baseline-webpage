@@ -120,7 +120,8 @@ resources:
 
   ## In order to print out the hosted domain via `serverless info` we need to define the DomainName output for CloudFormation
   Outputs:
-    WebsiteCloudFrontDistributionOutput:
+    WebsiteCloudFrontDistribution:
+      Description: Cloudfront site URL
       Value:
         "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
     CDNDistributionId:
