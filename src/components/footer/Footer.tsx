@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './footer.module.scss';
 
 const Footer = (): JSX.Element => (
@@ -6,9 +7,9 @@ const Footer = (): JSX.Element => (
     <div className={styles.footerWrapper}>
       <div className={styles.content}>
         <div className={styles.logo}>
-          <a href="/#">
+          <Link to="/">
             <img src="/baseline-logo-white.svg" alt="Baseline" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

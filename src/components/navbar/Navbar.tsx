@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Collapse } from 'reactstrap';
 import styles from './navbar.module.scss';
 
 const links = [
   {
     href: '/',
-    label: 'Home',
+    label: 'CTA',
   },
 ];
 
@@ -17,14 +18,14 @@ const Navbar = (): JSX.Element => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navContainer}>
-        <a href="/">
+        <Link to="/">
           <img src="/baseline-icon-black.svg" alt="Baseline" />
-        </a>
+        </Link>
         <div className={styles.links}>
           {links.map((link) => (
-            <a key={link.label} href={link.href}>
+            <Link key={link.label} to={link.href}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
         <div className={styles.mobile}>
@@ -41,9 +42,9 @@ const Navbar = (): JSX.Element => {
       <Collapse isOpen={isNavOpen}>
         <div className={styles.collapseContent}>
           {links.map((link) => (
-            <a key={link.label} onClick={toggleNav} href={link.href}>
+            <Link key={link.label} onClick={toggleNav} to={link.href}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       </Collapse>
