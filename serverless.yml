@@ -13,7 +13,7 @@ plugins:
   - serverless-cloudfront-invalidate
 
 custom:
-  s3Bucket: ${param:profile}-${opt:stage}
+  s3Bucket: ${param:profile}-${opt:stage}-bsln-web
   s3Sync:
     - bucketName: ${self:custom.s3Bucket}
       localDir: build/
