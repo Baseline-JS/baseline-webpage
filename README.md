@@ -27,7 +27,7 @@ This is a simple React static site that is deployed to AWS.
 
 1. `yarn`
 2. `yarn rename your-project-name` which will update the profile used in all files
-3. `yarn aws:profile` which will configure AWS CLI with a new profile (only required for deploying from local)
+3. `yarn aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
 
 ## Run Locally
 
