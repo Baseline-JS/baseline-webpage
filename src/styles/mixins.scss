@@ -1,33 +1,6 @@
 @use './colors';
 @use './layout';
 
-@mixin drop-shadow-low() {
-  --shadow-color: 0deg 0% 63%;
-  box-shadow: 0 1px 1.1px hsl(var(--shadow-color) / 0.34),
-    0 1.7px 1.9px -1.2px hsl(var(--shadow-color) / 0.34),
-    0 4px 4.5px -2.5px hsl(var(--shadow-color) / 0.34);
-}
-
-@mixin drop-shadow-medium() {
-  --shadow-color: 0deg 0% 63%;
-  box-shadow: 0 1px 1.1px hsl(var(--shadow-color) / 0.36),
-    0 3.3px 3.7px -0.8px hsl(var(--shadow-color) / 0.36),
-    0 8.2px 9.2px -1.7px hsl(var(--shadow-color) / 0.36),
-    0 20px 22.5px -2.5px hsl(var(--shadow-color) / 0.36);
-}
-
-@mixin drop-shadow-high() {
-  --shadow-color: 0deg 0% 63%;
-  box-shadow: 0 1px 1.1px hsl(var(--shadow-color) / 0.34),
-    0 5.8px 6.5px -0.4px hsl(var(--shadow-color) / 0.34),
-    0 10.9px 12.3px -0.7px hsl(var(--shadow-color) / 0.34),
-    0 17.9px 20.1px -1.1px hsl(var(--shadow-color) / 0.34),
-    -0.1px 28.6px 32.2px -1.4px hsl(var(--shadow-color) / 0.34),
-    -0.1px 44.7px 50.3px -1.8px hsl(var(--shadow-color) / 0.34),
-    -0.1px 67.9px 76.4px -2.1px hsl(var(--shadow-color) / 0.34),
-    -0.2px 100px 112.5px -2.5px hsl(var(--shadow-color) / 0.34);
-}
-
 @mixin blackButton() {
   padding: 13px 28px;
   color: colors.$white;
@@ -42,61 +15,5 @@
     color: colors.$black;
     text-decoration: none;
     background: colors.$white;
-  }
-}
-
-@mixin arrowTextButton() {
-  display: flex;
-  align-items: center;
-  color: colors.$black;
-  font: normal normal normal 20px/27px 'Roboto', sans-serif;
-  text-decoration: none;
-  background: unset;
-  border: unset;
-
-  &::after {
-    display: flex;
-    align-items: center;
-    margin-top: 3px;
-    margin-left: 10px;
-    color: colors.$red;
-    font-weight: 900;
-    font-size: 14px;
-    text-align: right;
-    transition: transform 150ms ease-in-out;
-    content: '>';
-  }
-
-  &:hover {
-    &::after {
-      transform: translateX(2.5px);
-    }
-  }
-}
-
-@mixin customInput() {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
-  padding: 8px 23px 10px;
-  font: normal normal 600 12px/24px 'Roboto', sans-serif;
-  border: 3px solid colors.$black;
-  border-radius: 15px;
-
-  input,
-  textarea {
-    padding: unset;
-    color: colors.$black;
-    font: normal normal bold 21px/25px 'Roboto', sans-serif;
-    background: unset;
-    border: unset;
-
-    &::placeholder {
-      color: colors.$grey;
-    }
-
-    &:focus {
-      outline: none;
-    }
   }
 }

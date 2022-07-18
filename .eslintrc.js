@@ -4,11 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    'airbnb-typescript', // Uses the recommended rules from airbnb-typescript
-    'airbnb/hooks',
-    'prettier',
-  ],
+  extends: ['prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -31,7 +27,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-wrap-multilines': [
-      'error',
+      'off',
       {
         declaration: 'parens-new-line',
         assignment: 'parens-new-line',

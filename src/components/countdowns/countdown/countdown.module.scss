@@ -46,13 +46,6 @@
         p {
           font: normal normal normal 16px/24px 'Roboto', sans-serif;
         }
-
-        button {
-          @include mixins.arrowTextButton();
-
-          margin-top: 10px;
-          padding: unset;
-        }
       }
     }
 
