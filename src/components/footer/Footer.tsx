@@ -7,7 +7,7 @@ const Footer = (): JSX.Element => (
       <div className={styles.content}>
         <div className={styles.logo}>
           <a href="/#">
-            <img src="/baseline-logo.svg" alt="Baseline" />
+            <img src="/baseline-logo-white.svg" alt="Baseline" />
           </a>
         </div>
       </div>
