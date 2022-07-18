@@ -19,9 +19,10 @@ This is a simple React static site that is deployed to AWS.
 
 ## Local Requirements
 
-* [Yarn](https://classic.yarnpkg.com/en/docs/install)
-* Node.js 14 [(we suggest using nvm)](https://github.com/nvm-sh/nvm#install--update-script) 
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (only required for local deployment)
+* [Yarn version 1](https://classic.yarnpkg.com/en/docs/install) `npm install -g yarn@1`
+* Node.js 16 [(we suggest using nvm)](https://github.com/nvm-sh/nvm#install--update-script) 
+* [AWS CLI](https://aws.amazon.com/cli) (only required for local deployment)
+
 ## Project Setup
 
 1. `yarn`
