@@ -15,23 +15,23 @@ printf "\n"
 
 echo "Configuring AWS...."
 # If you specify a profile with --profile on an individual command, that overrides the setting specified in the environment variable for only that command.
-aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID:-}" --profile "$AWS_PROFILE"
-aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY:-}" --profile "$AWS_PROFILE"
+aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID:-}" --profile "$1"
+aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY:-}" --profile "$1"
 if [ "$AWS_SESSION_TOKEN" ]; then
     echo "Setting session token"
-    aws configure set aws_session_token "${AWS_SESSION_TOKEN:-}" --profile "$AWS_PROFILE"
+    aws configure set aws_session_token "${AWS_SESSION_TOKEN:-}" --profile "$1"
 else
-    EXISTING_SESSION=$(aws configure get aws_session_token --profile "$AWS_PROFILE")
+    EXISTING_SESSION=$(aws configure get aws_session_token --profile "$1")
     if [ "$EXISTING_SESSION" ]; then
         echo "Existing session token found, removing"
-        aws configure set aws_session_token "" --profile "$AWS_PROFILE"
+        aws configure set aws_session_token "" --profile "$1"
     else
         echo "No existing session token... ignoring"
     fi
 fi
 
 echo "Testing AWS Keys..."
-IAM_RESULT=$(aws iam list-users --profile "$AWS_PROFILE")
+IAM_RESULT=$(aws iam list-users --profile "$1")
 if [ "$IAM_RESULT" ]; then
     echo "Credentials work!"
 else
