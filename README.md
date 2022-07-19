@@ -22,10 +22,10 @@ This is a simple React static site that is deployed to AWS.
 
 ## Lighthouse Desktop Scores
 
-![Lighthouse Performance](https://img.shields.io/badge/performance-100%-brightgreen?style=plastic)
-![Lighthouse Accessibility](https://img.shields.io/badge/accessibility-100%-brightgreen.svg?style=plastic)
-![Lighthouse Best Practices](https://img.shields.io/badge/best%20practices-100%-brightgreen.svg?style=plastic)
-![Lighthouse SEO](https://img.shields.io/badge/SEO-100%-brightgreen.svg?style=plastic)
+![Lighthouse Performance](https://img.shields.io/badge/performance-100-brightgreen?style=plastic)
+![Lighthouse Accessibility](https://img.shields.io/badge/accessibility-100-brightgreen.svg?style=plastic)
+![Lighthouse Best Practices](https://img.shields.io/badge/best%20practices-100-brightgreen.svg?style=plastic)
+![Lighthouse SEO](https://img.shields.io/badge/SEO-100-brightgreen.svg?style=plastic)
 
 ## Local Requirements
 
