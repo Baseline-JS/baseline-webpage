@@ -20,7 +20,7 @@ This is a simple React static site that is deployed to AWS.
 - Be able to deploy without a domain
 - Allow a dev and prod environment so work can be validated before releasing to prod
 
-## Lighthouse Desktop Scores
+## Lighthouse Scores
 
 ![Lighthouse Performance](https://img.shields.io/badge/performance-100-brightgreen?style=plastic)
 ![Lighthouse Accessibility](https://img.shields.io/badge/accessibility-100-brightgreen.svg?style=plastic)
