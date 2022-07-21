@@ -62,7 +62,7 @@ See Baseline Webpage in action
 
 - [Yarn version 1](https://classic.yarnpkg.com/en/docs/install) `npm install -g yarn@1`
 - Node.js 16 [(we suggest using nvm)](https://github.com/nvm-sh/nvm#install--update-script)
-- [AWS CLI](https://aws.amazon.com/cli) (only required for local deployment)
+- [AWS CLI v2](https://aws.amazon.com/cli) (only required for local deployment)
 
 ## Project Setup
 
@@ -123,7 +123,7 @@ If you are using the BitBucket pipeline deployment then you will need to set the
 - PROFILE = baseline-webpage
 - REGION = ap-southeast-2
 
-Optionally these can be used if master and prod are in different accounts or the IAM roles have different access:
+Optionally these can be used if dev and prod are in different accounts or the IAM roles have different access:
 
 - PROD_AWS_ACCOUNT_ACCESS_KEY_ID = xxxx
 - PROD_AWS_ACCOUNT_SECRET_ACCESS_KEY = xxxx
