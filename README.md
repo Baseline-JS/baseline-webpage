@@ -1,11 +1,11 @@
 # Baseline Webpage
 
-This is a simple React static site that is deployed to AWS.
+A simple React static site that is deployed to AWS using serverless.
 
 ![serverless](https://camo.githubusercontent.com/dcd998f0b6567f17873812fa9bcc9767d63c056862c19024ccbfe5ec7cefe2eb/687474703a2f2f7075626c69632e7365727665726c6573732e636f6d2f6261646765732f76332e737667)
 ![node](https://img.shields.io/badge/node.js-16.x-brightgreen?style=plastic)
 ![platform](https://img.shields.io/badge/platform-AWS-blue?style=plastic)
-![pm](https://img.shields.io/badge/pm-Yarn-yellow?style=plastic)
+![pm](https://img.shields.io/badge/pm-yarn-yellow?style=plastic)
 ![framework](https://img.shields.io/badge/framework-React-pink?style=plastic)
 ![CDN](https://img.shields.io/badge/CDN-Cloudfront-blue?style=plastic)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic)
@@ -14,18 +14,49 @@ This is a simple React static site that is deployed to AWS.
 
 ## Goals
 
-- Start with a pre-configured static React site
-- Easily deploy to AWS with minimal effort
-- Support deployment through local, Bitbucket & GitHub
-- Be able to deploy without a domain
-- Allow a dev and prod environment so work can be validated before releasing to prod
+- Deploy quickly with minimal effort
+- Everything you need to start building straight away with production quality
+- Support deployment from local, Bitbucket & GitHub
+- Deploy and test ideas before you buy that perfect domain name
+- Prod, dev and local environments separated from the start
+
+## Features
+
+- ⚡️ Serverless
+- 💰 Cost friendly - only pay for what you use
+- 🌏 Fast and global CDN with Cloudfront
+- ✨ Automatic cache invalidation (1000 free per month - [check pricing](https://www.amazonaws.cn/en/cloudfront/pricing/)) 
+- 👉 Redirect HTTP to HTTPS
+- 🚀 Ready to use Bitbucket Pipeline and Github Action
+- ⌨️ Deploy from your local machine (optional)
+- 🤝 HTTP2 support
+- 🗜 Gzip and Brotli compression
+- 🏗 Modern tools Typescript, React, Serverless Framework, SCSS 
+- 🔐 HTTPS/TLS support
+- 💻 Team Collaboration - Great for a single developer or a whole team
+- 🥞 Perfect for a Jamstack
+- 🏎 Fast Deployments - deploy changes quicker!
+- ☎️ Minimal configuration required to get started
+- 🛣 DNS with Route53
+- ✅ Free SSL/TLS with [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/pricing/?nc=sn&loc=3) when using Route53
+- 🎬 Test new ideas quickly and single command tear down when you are done, no mess
 
 ## Lighthouse Scores
 
+Start with a perfect score!
+
+🎉
 ![Lighthouse Performance](https://img.shields.io/badge/performance-100-brightgreen?style=plastic)
 ![Lighthouse Accessibility](https://img.shields.io/badge/accessibility-100-brightgreen.svg?style=plastic)
 ![Lighthouse Best Practices](https://img.shields.io/badge/best%20practices-100-brightgreen.svg?style=plastic)
 ![Lighthouse SEO](https://img.shields.io/badge/SEO-100-brightgreen.svg?style=plastic)
+🎉
+
+## Demo
+
+See Baseline Webpage in action
+
+[<img width="697" alt="Demo video" src="https://user-images.githubusercontent.com/72828539/180130578-eba68475-5ef0-4759-a791-ea2543193292.jpg">](https://www.youtube.com/watch?v=oEA3oknaRoI)
 
 ## Local Requirements
 
