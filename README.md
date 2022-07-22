@@ -25,7 +25,7 @@ A simple React static site that is deployed to AWS using serverless.
 - ⚡️ Serverless
 - 💰 Cost friendly - only pay for what you use
 - 🌏 Fast and global CDN with Cloudfront
-- ✨ Automatic cache invalidation (1000 free per month - [check pricing](https://www.amazonaws.cn/en/cloudfront/pricing/)) 
+- ✨ Automatic cache invalidation (1000 free per month - [check pricing](https://aws.amazon.com/cloudfront/pricing/)) 
 - 👉 Redirect HTTP to HTTPS
 - 🚀 Ready to use Bitbucket Pipeline and Github Action
 - ⌨️ Deploy from your local machine (optional)
