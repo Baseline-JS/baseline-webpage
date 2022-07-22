@@ -7,9 +7,9 @@ PARENT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )/.."
 cd "$PARENT_PATH"
 
 if [ "${BITBUCKET_BRANCH:-${GITHUB_REF##*/}}" == "prod" ]; then
-  yarn serverless deploy --stage prod --region $AWS_REGION --param="profile=$AWS_PROFILE" 
+  yarn serverless deploy --verbose --stage prod --region $AWS_REGION --param="profile=$AWS_PROFILE" 
 else
-  yarn serverless deploy --stage dev --region $AWS_REGION --param="profile=$AWS_PROFILE" 
+  yarn serverless deploy --verbose --stage dev --region $AWS_REGION --param="profile=$AWS_PROFILE" 
 fi
 
 echo "Done!"
