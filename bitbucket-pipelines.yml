@@ -22,7 +22,7 @@ pipelines:
           size: 2x
           script:
             - touch ~/.bash_profile
-            - . ./scripts/setup-nvm.sh
+            - . ./scripts/setup-npm.sh
             - ./scripts/build.sh
           caches:
             - node
