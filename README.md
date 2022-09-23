@@ -66,13 +66,12 @@ See Baseline Webpage in action
 
 ## Project Setup
 
-1. `npm install`
-2. `npm run rename your-project-name` which will update the profile used in all files. It will also generate a random value to attach to the S3 bucket name to keep it somewhat unique.
-3. `npm run aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
+1. `npx baseline-webpage my-app` where `my-app` is the name of your app
+2. `cd my-app` and `npm run aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
 
 ## Run Locally
 
-1. `npm run start`
+1. `npm start`
 
 ## Deploying
 
