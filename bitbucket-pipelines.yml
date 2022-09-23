@@ -10,12 +10,11 @@ pipelines:
             - touch ~/.bash_profile
             - . ./scripts/setup-npm.sh
             - . ./scripts/setup-aws.sh
-            - ./scripts/build.sh
+            - npm install
+            - npm run build
             - ./scripts/deploy.sh
           caches:
             - node
-            - yarn
-            - nodecustom
     default:
       - step:
           name: Build
@@ -23,12 +22,7 @@ pipelines:
           script:
             - touch ~/.bash_profile
             - . ./scripts/setup-npm.sh
-            - ./scripts/build.sh
+            - npm install
+            - npm run build
           caches:
             - node
-            - yarn
-
-definitions:
-  caches:
-    yarn: /usr/local/share/.cache/yarn
-    nodecustom: ./node_modules

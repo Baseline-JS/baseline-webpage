@@ -41,8 +41,11 @@ jobs:
       - name: Setup AWS
         run: ./scripts/setup-aws.sh
 
+      - name: Install Packages
+        run: npm install
+
       - name: Build App
-        run: ./scripts/build.sh
+        run: npm run build
 
       - name: Deploy App
         run: ./scripts/deploy.sh

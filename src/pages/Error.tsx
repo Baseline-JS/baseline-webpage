@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Countdown from '../components/countdowns/countdown/Countdown';
 import Page from '../components/page/Page';
 
 interface Props {
@@ -30,15 +29,10 @@ const Error = (props: Props): JSX.Element => {
 
   return (
     <Page title={`${errorCode}`}>
-      <div style={{ minHeight: '100vh' }}>
-        <Countdown
-          fill
-          index={errorCode}
-          heading=""
-          subHeading="Something has gone wrong"
-          content={getErrorText()}
-          image=""
-        />
+      <div
+        style={{ minHeight: '100vh', textAlign: 'center', paddingTop: '20px' }}
+      >
+        Something has gone wrong
       </div>
     </Page>
   );

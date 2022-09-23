@@ -8,7 +8,7 @@
   z-index: layout.$navZIndex;
   margin: auto;
   padding: 40px 32px;
-  background-color: colors.$white;
+  background-color: colors.$greyLighter2;
 
   .navContainer {
     img {
@@ -23,33 +23,6 @@
     max-width: layout.$maxWidth;
     margin: auto;
   }
-
-  .links {
-    @media screen and (max-width: layout.$md) {
-      display: none;
-    }
-
-    > a {
-      padding: 0 25px;
-      color: colors.$black;
-      font: normal normal bold 14px/18px 'Roboto', sans-serif;
-      text-decoration: none;
-      transition: opacity 100ms ease-in-out;
-
-      &:hover {
-        color: colors.$black;
-        opacity: 0.75;
-      }
-
-      &:last-of-type {
-        @include mixins.blackButton();
-
-        padding: 7px 14px;
-        margin-left: 12px;
-        font: normal normal bold 14px/18px 'Roboto', sans-serif;
-      }
-    }
-  }
 }
 
 .mobile {
@@ -62,24 +35,5 @@
     width: 24px;
     height: 24px;
     object-fit: contain;
-  }
-}
-
-.collapseContent {
-  display: flex;
-  flex-direction: column;
-  padding-top: 16px;
-
-  a {
-    margin: 4px 0;
-    padding: 7px 14px;
-    color: colors.$black;
-    text-align: center;
-    text-decoration: none;
-
-    &:hover {
-      color: colors.$black;
-      text-decoration: underline;
-    }
   }
 }

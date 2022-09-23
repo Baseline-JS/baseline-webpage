@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import styles from './page.module.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface Props {
   title: string;

@@ -1,34 +1,36 @@
 {
   "name": "baseline-webpage",
-  "version": "1.0.0",
+  "version": "2.0.1",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Baseline-JS/baseline-webpage"
+  },
   "engines": {
     "node": ">=14.0.0"
   },
+  "bin": "./scripts/bin.js",
   "scripts": {
     "build": "NODE_OPTIONS=--max_old_space_size=8192 GENERATE_SOURCEMAP=false react-scripts build",
     "start": "react-scripts start",
-    "deploy:dev": "yarn build && export AWS_PROFILE=baseline-webpage && yarn serverless deploy --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "remove:dev": "export AWS_PROFILE=baseline-webpage && yarn serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "deploy:prod": "yarn build && export AWS_PROFILE=baseline-webpage && yarn serverless deploy --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "remove:prod": "export AWS_PROFILE=baseline-webpage && yarn serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "deploy:dev": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "remove:dev": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "deploy:prod": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "remove:prod": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "info:dev": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "info:prod": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
     "rename": "./scripts/rename.sh",
-    "aws:profile": "./scripts/setup-aws-profile.sh baseline-webpage"
+    "aws:profile": "./scripts/setup-aws-profile.sh baseline-webpage",
+    "lint": "npx eslint --ext .tsx,.ts src/"
   },
   "dependencies": {
-    "bootstrap": "5.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-router-dom": "6.2.1",
-    "reactstrap": "9.1.2"
+    "react-router-dom": "6.2.1"
   },
   "devDependencies": {
-    "@babel/core": "7.18.6",
-    "@babel/plugin-syntax-flow": "7.14.5",
-    "@babel/plugin-transform-react-jsx": "7.14.9",
-    "@popperjs/core": "2.10.2",
     "@types/node": "17.0.18",
-    "@types/react": "18.0.15",
-    "@types/react-dom": "18.0.6",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
     "@typescript-eslint/eslint-plugin": "5.30.6",
     "@typescript-eslint/parser": "5.30.6",
     "eslint": "8.19.0",
@@ -38,17 +40,16 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.6.0",
-    "postcss": "8.3.11",
-    "postcss-scss": "4.0.2",
+    "postcss": "8.4.16",
+    "postcss-scss": "4.0.5",
     "prettier": "2.4.1",
     "react-scripts": "5.0.1",
     "sass": "1.43.4",
     "serverless": "3.21.0",
-    "serverless-cloudfront-invalidate": "1.11.0",
+    "serverless-cloudfront-invalidate": "1.12.2",
     "serverless-s3-sync": "3.0.0",
     "stylelint": "14.9.1",
     "stylelint-config-css-modules": "2.3.0",
-    "stylelint-config-rational-order": "0.1.2",
     "stylelint-config-sass-guidelines": "9.0.1",
     "stylelint-config-standard": "24.0.0",
     "stylelint-config-standard-scss": "5.0.0",
@@ -56,8 +57,7 @@
     "typescript": "4.7.4"
   },
   "resolutions": {
-    "colors": "1.4.0",
-    "autoprefixer": "10.4.5"
+    "colors": "1.4.0"
   },
   "browserslist": {
     "production": [

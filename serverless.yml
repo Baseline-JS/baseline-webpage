@@ -13,7 +13,7 @@ plugins:
   - serverless-cloudfront-invalidate
 
 custom:
-  s3Bucket: ${param:profile}-${opt:stage}-bsln-web
+  s3Bucket: ${param:profile}-${opt:stage}-bsln-web-${param:bucketId}
   s3Sync:
     - bucketName: ${self:custom.s3Bucket}
       localDir: build/
@@ -96,10 +96,17 @@ resources:
             CloudFrontDefaultCertificate: true
 
   Outputs:
+    WebsiteUrl:
+      Description: Cloudfront site URL
+      Value:
+        !Join
+          - '://'
+          - - "https"
+            - "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
     WebsiteCloudFrontDistribution:
       Description: Cloudfront site URL
       Value:
-        "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
+       "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
     CDNDistributionId:
       Description: CDN distribution id.
       Value:

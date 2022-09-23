@@ -5,7 +5,7 @@ A simple React static site that is deployed to AWS using serverless.
 ![serverless](https://camo.githubusercontent.com/dcd998f0b6567f17873812fa9bcc9767d63c056862c19024ccbfe5ec7cefe2eb/687474703a2f2f7075626c69632e7365727665726c6573732e636f6d2f6261646765732f76332e737667)
 ![node](https://img.shields.io/badge/node.js-16.x-brightgreen?style=plastic)
 ![platform](https://img.shields.io/badge/platform-AWS-blue?style=plastic)
-![pm](https://img.shields.io/badge/pm-yarn-yellow?style=plastic)
+![pm](https://img.shields.io/badge/pm-npm-yellow?style=plastic)
 ![framework](https://img.shields.io/badge/framework-React-pink?style=plastic)
 ![CDN](https://img.shields.io/badge/CDN-Cloudfront-blue?style=plastic)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic)
@@ -60,28 +60,28 @@ See Baseline Webpage in action
 
 ## Local Requirements
 
-- [Yarn version 1](https://classic.yarnpkg.com/en/docs/install) `npm install -g yarn@1`
 - Node.js 16 [(we suggest using nvm)](https://github.com/nvm-sh/nvm#install--update-script)
+- NPM version 7+ [installing npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [AWS CLI v2](https://aws.amazon.com/cli) (only required for local deployment)
 
 ## Project Setup
 
-1. `yarn`
-2. `yarn rename your-project-name` which will update the profile used in all files
-3. `yarn aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
+1. `npm install`
+2. `npm run rename your-project-name` which will update the profile used in all files. It will also generate a random value to attach to the S3 bucket name to keep it somewhat unique.
+3. `npm run aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
 
 ## Run Locally
 
-1. `yarn start`
+1. `npm run start`
 
 ## Deploying
 
-1. `yarn deploy:dev`
-2. Find the cloudfront domain that was deployed to by opening the AWS Console, navigating to Cloudformation and opening the outputs for this stack
+1. `npm run deploy:dev`
+2. The output from the deploy will show `WebsiteUrl` that the site was deployed to. If you need to find it again you can run `npm run info:dev`
 
 ## Deploy a Change
 
-1. `yarn deploy:dev`
+1. `npm run deploy:dev`
 2. Allow some time for the Cloudfront cache invalidation to finish to see changes in browser
 
 ## Adding a Domain
@@ -94,7 +94,7 @@ See Baseline Webpage in action
 
 ## Remove Stack
 
-To destroy the deployed stack so it is no longer on AWS run `yarn remove:dev`.
+To destroy the deployed stack so it is no longer on AWS run `npm run remove:dev`.
 
 ## Environment Flag
 
