@@ -15,14 +15,24 @@ pipelines:
             - ./scripts/deploy.sh
           caches:
             - node
-    default:
-      - step:
-          name: Build
-          size: 2x
-          script:
-            - touch ~/.bash_profile
-            - . ./scripts/setup-npm.sh
-            - npm install
-            - npm run build
-          caches:
-            - node
+  default:
+    - step:
+        name: Build
+        size: 2x
+        script:
+          - touch ~/.bash_profile
+          - . ./scripts/setup-npm.sh
+          - npm install
+          - npm run build
+        caches:
+          - node
+    - step:
+        name: Lint
+        size: 2x
+        script:
+          - touch ~/.bash_profile
+          - . ./scripts/setup-npm.sh
+          - npm install
+          - npm run lint
+        caches:
+          - node
