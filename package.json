@@ -1,10 +1,32 @@
 {
   "name": "baseline-webpage",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/Baseline-JS/baseline-webpage"
   },
+  "keywords": [
+    "serverless",
+    "aws",
+    "baseline",
+    "react",
+    "typescript",
+    "deploy",
+    "webpage",
+    "s3",
+    "website",
+    "cdn",
+    "cloudfront",
+    "ssl",
+    "tls",
+    "https",
+    "bitbucket",
+    "github",
+    "cache",
+    "pipeline",
+    "scss"
+  ],
+  "description": "A simple React static site that is deployed to AWS using serverless.",
   "engines": {
     "node": ">=14.0.0"
   },
