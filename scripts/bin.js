@@ -3,7 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
-const { exec } = require('child_process');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 const projectName = process.argv[2];
 console.log(`Project Name [${projectName}]`);
@@ -15,11 +16,39 @@ const cwd = process.cwd();
 const sourceFile = `${webpagePath}/`;
 const destination = `${cwd}/${projectName}`;
 
+async function checkNpmVersion() {
+  const { stdout, stderr } = await exec('npm -v');
+  const npmMajorVersion = parseInt(stdout[0]);
+  if (npmMajorVersion < 7) {
+    console.log("npm >=7 required, try 'npm install -g npm@7' ");
+    exit();
+  }
+}
+
+async function checkNodeVersion() {
+  const { stdout, stderr } = await exec('node -v');
+  const nodeMajorVersion = stdout.slice(1, stdout.search(/\./));
+  console.log(nodeMajorVersion);
+  if (nodeMajorVersion < 14) {
+    console.log("node >=14 required, try 'nvm install 14 && nvm use 14' ");
+    exit();
+  }
+}
+
 (async () => {
   const mkdirPath = `${cwd}/${projectName}`;
 
-  const isExistingFolder = fs.existsSync(mkdirPath);
+  await checkNodeVersion();
+  await checkNpmVersion();
 
+  const { stdout, stderr } = await exec('npm -v');
+  const npmMajorVersion = parseInt(stdout[0]);
+  if (npmMajorVersion < 7) {
+    console.log("npm >=7 required, try 'npm install -g npm@7' ");
+    exit();
+  }
+
+  const isExistingFolder = fs.existsSync(mkdirPath);
   if (isExistingFolder) {
     console.log(
       'Folder already exists, use a different project name or install location, exiting.',
