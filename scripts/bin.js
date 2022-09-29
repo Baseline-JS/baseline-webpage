@@ -84,7 +84,7 @@ async function copyFolderRecursiveSync(source, target, isRoot = true) {
   if (fs.lstatSync(source).isDirectory()) {
     const files = fs.readdirSync(source);
     files.forEach(async function (file) {
-      if (file.search('.git') < 0) {
+      if (file !== '.git' && file !== 'node_modules') {
         const filePath = path.join(source, file);
         if (fs.lstatSync(filePath).isDirectory()) {
           await copyFolderRecursiveSync(filePath, destination, false);
