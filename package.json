@@ -27,8 +27,10 @@
     "scss"
   ],
   "description": "A simple React static site that is deployed to AWS using serverless.",
+  "engineStrict": true,
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
   },
   "bin": "./scripts/bin.js",
   "scripts": {
