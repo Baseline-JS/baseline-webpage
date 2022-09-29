@@ -28,7 +28,6 @@ async function checkNpmVersion() {
 async function checkNodeVersion() {
   const { stdout, stderr } = await exec('node -v');
   const nodeMajorVersion = stdout.slice(1, stdout.search(/\./));
-  console.log(nodeMajorVersion);
   if (nodeMajorVersion < 14) {
     console.log("node >=14 required, try 'nvm install 14 && nvm use 14' ");
     exit();
