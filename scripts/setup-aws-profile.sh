@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Sets REGION, PROFILE, AWS_REGION, AWS_PROFILE
-. ./scripts/project-variables.sh
-
 printf "Setup an AWS profile for [\033[32m%s\033[39m]\n" "$1"
 
 printf "Enter the AWS Access Key: "
