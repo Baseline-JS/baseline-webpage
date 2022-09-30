@@ -28,7 +28,7 @@ else
 fi
 
 echo "Testing AWS Keys..."
-IAM_RESULT=$(aws iam list-users --profile "$1")
+IAM_RESULT=$(aws sts get-caller-identity --query "Account" --output text --profile "$1")
 if [ "$IAM_RESULT" ]; then
     echo "Credentials work!"
 else
