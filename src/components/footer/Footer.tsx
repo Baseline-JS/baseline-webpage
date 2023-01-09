@@ -7,9 +7,7 @@ const Footer = (): JSX.Element => (
     <div className={styles.footerWrapper}>
       <div className={styles.content}>
         <div className={styles.logo}>
-          <Link to="/">
-            <img src="/baseline-logo-white.svg" alt="Baseline" />
-          </Link>
+          <Link to="/">Logo Here</Link>
         </div>
       </div>
     </div>

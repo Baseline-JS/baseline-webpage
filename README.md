@@ -56,7 +56,7 @@ Start with a perfect score!
 
 See Baseline Webpage in action
 
-[<img width="697" alt="Demo video" src="https://user-images.githubusercontent.com/72828539/180130578-eba68475-5ef0-4759-a791-ea2543193292.jpg">](https://youtu.be/atJ-s_utP2A)
+[<img width="697" alt="Demo video" src="https://user-images.githubusercontent.com/72828539/211226462-4cea6e83-9843-4927-8ffb-d92b86f15173.png">](https://youtu.be/NRoE0rNcfBM)
 
 ## Local Requirements
 
@@ -131,7 +131,7 @@ Optionally these can be used if dev and prod are in different accounts or the IA
 
 ## Baseline
 
-If you would like to learn more about what we do please visit [Devika Baseline](https://devikabaseline.com/)
+If you would like to learn more about what we do please visit [Baseline](https://baselinejs.com/)
 
 ## License
 

@@ -40,13 +40,6 @@ async function checkNodeVersion() {
   await checkNodeVersion();
   await checkNpmVersion();
 
-  const { stdout, stderr } = await exec('npm -v');
-  const npmMajorVersion = parseInt(stdout[0]);
-  if (npmMajorVersion < 7) {
-    console.log("npm >=7 required, try 'npm install -g npm@7' ");
-    exit();
-  }
-
   const isExistingFolder = fs.existsSync(mkdirPath);
   if (isExistingFolder) {
     console.log(

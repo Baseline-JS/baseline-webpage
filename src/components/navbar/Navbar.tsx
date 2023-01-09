@@ -6,9 +6,7 @@ const Navbar = (): JSX.Element => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navContainer}>
-        <Link to="/">
-          <img src="/baseline-icon-black.svg" alt="Baseline" />
-        </Link>
+        <Link to="/">Logo Here</Link>
       </div>
     </div>
   );
