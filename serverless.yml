@@ -6,7 +6,7 @@ service: baseline-webpage
 # Params
 # - profile
 
-frameworkVersion: ">=2.0.0 <4.0.0"
+frameworkVersion: '>=2.0.0 <4.0.0'
 
 plugins:
   - serverless-s3-sync
@@ -18,9 +18,9 @@ custom:
     - bucketName: ${self:custom.s3Bucket}
       localDir: build/
   cloudfrontInvalidate:
-      - distributionIdKey: "CDNDistributionId"
-        items:
-          - "/*"
+    - distributionIdKey: 'CDNDistributionId'
+      items:
+        - '/*'
 
 provider:
   name: aws
@@ -36,10 +36,14 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.s3Bucket}
-        AccessControl: PublicRead
-        WebsiteConfiguration:
-          IndexDocument: index.html
-          ErrorDocument: index.html
+        OwnershipControls:
+          Rules:
+            - ObjectOwnership: BucketOwnerPreferred
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+          IgnorePublicAcls: false
+          RestrictPublicBuckets: false
     # Add bucket policy for cloudfront access
     WebsiteS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -50,10 +54,43 @@ resources:
           Statement:
             - Sid: PublicReadGetObject
               Effect: Allow
-              Principal: "*"
+              Principal:
+                Service: cloudfront.amazonaws.com
               Action:
                 - s3:GetObject
               Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+              Condition:
+                StringEquals:
+                  AWS:SourceArn:
+                    !Join [
+                      '',
+                      [
+                        'arn:aws:cloudfront::',
+                        !Ref AWS::AccountId,
+                        ':distribution/',
+                        !Ref WebsiteCloudFrontDistribution,
+                      ],
+                    ]
+    # Cloudfront response policy to set no-cache headers
+    CloudfrontResponsePolicy:
+      Type: AWS::CloudFront::ResponseHeadersPolicy
+      Properties:
+        ResponseHeadersPolicyConfig:
+          Name: ${self:service}-${opt:stage}-no-cache-headers
+          CustomHeadersConfig:
+            Items:
+              - Header: 'Cache-Control'
+                Override: true
+                Value: 'no-cache'
+    # OAC Role for the Cloudfront distribution to block direct S3 Access
+    WebsiteCloudFrontDistributionOriginAccessControl:
+      Type: AWS::CloudFront::OriginAccessControl
+      Properties:
+        OriginAccessControlConfig:
+          Name: ${self:service}-${opt:stage}-cloudfront-oac
+          OriginAccessControlOriginType: s3
+          SigningBehavior: always
+          SigningProtocol: sigv4
     # Cloudfront distribution
     WebsiteCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
@@ -64,15 +101,14 @@ resources:
           Origins:
             - DomainName: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
               Id: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
-              CustomOriginConfig:
-                HTTPPort: 80
-                HTTPSPort: 443
-                OriginProtocolPolicy: https-only
+              OriginAccessControlId: !Ref WebsiteCloudFrontDistributionOriginAccessControl
+              S3OriginConfig:
+                OriginAccessIdentity: ''
           # Aliases:
           # - your-url.com
-          DefaultRootObject: /index.html # Serve index by default since it is a SPA
+          DefaultRootObject: index.html # Serve index by default since it is a SPA
           CustomErrorResponses:
-            - ErrorCode: 404
+            - ErrorCode: 403
               ResponseCode: 200
               ResponsePagePath: /index.html # errors are handled by react router
           DefaultCacheBehavior:
@@ -92,21 +128,21 @@ resources:
                 Forward: none
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+            ResponseHeadersPolicyId: !Ref CloudfrontResponsePolicy
           ViewerCertificate:
             CloudFrontDefaultCertificate: true
 
   Outputs:
     WebsiteUrl:
       Description: Cloudfront site URL
-      Value:
-        !Join
-          - '://'
-          - - "https"
-            - "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
+      Value: !Join
+        - '://'
+        - - 'https'
+          - 'Fn::GetAtt': [WebsiteCloudFrontDistribution, DomainName]
     WebsiteCloudFrontDistribution:
       Description: Cloudfront site URL
       Value:
-       "Fn::GetAtt": [WebsiteCloudFrontDistribution, DomainName]
+        'Fn::GetAtt': [WebsiteCloudFrontDistribution, DomainName]
     CDNDistributionId:
       Description: CDN distribution id.
       Value:
