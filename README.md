@@ -119,7 +119,7 @@ If you are using the BitBucket pipeline deployment then you will need to set the
 
 - AWS_ACCESS_KEY_ID = xxxx
 - AWS_SECRET_ACCESS_KEY = xxxx
-- PROFILE = baseline-webpage
+- AWS_PROFILE = baseline-webpage
 - REGION = ap-southeast-2
 
 Optionally these can be used if staging and prod are in different accounts or the IAM roles have different access:

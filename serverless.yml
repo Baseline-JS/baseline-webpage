@@ -18,7 +18,6 @@ custom:
 provider:
   name: aws
   runtime: nodejs14.x
-  profile: ${param:profile} # force the profile parameter to be required
   deploymentMethod: direct
   deploymentPrefix: ${self:service}-${sls:stage}
 

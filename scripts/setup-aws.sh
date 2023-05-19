@@ -14,10 +14,10 @@ fi
 
 echo "Exporting env vars"
 export AWS_PROFILE="${AWS_PROFILE:-"baseline-webpage"}"
-echo "Profile: [$AWS_PROFILE]"
+echo "AWS Profile: [$AWS_PROFILE]"
 
 export AWS_REGION="${AWS_REGION:-"ap-southeast-2"}"
-echo "Region: [$AWS_REGION]"
+echo "AWS Region: [$AWS_REGION]"
 
 export AWS_HOME="/usr/local/bin/aws"
 export PATH="${AWS_HOME:-}:$PATH"

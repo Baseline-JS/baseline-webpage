@@ -36,12 +36,12 @@
   "scripts": {
     "build": "NODE_OPTIONS=--max_old_space_size=8192 GENERATE_SOURCEMAP=false react-scripts build",
     "start": "react-scripts start",
-    "deploy:staging": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage staging --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "remove:staging": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage staging --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "deploy:prod": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "remove:prod": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "info:staging": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage staging --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
-    "info:prod": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "deploy:staging": "npm run build && npx serverless deploy --verbose --stage staging --region ap-southeast-2 --aws-profile baseline-webpage",
+    "remove:staging": "npx serverless remove --stage staging --region ap-southeast-2 --aws-profile baseline-webpage",
+    "deploy:prod": "npm run build && npx serverless deploy --verbose --stage prod --region ap-southeast-2 --aws-profile baseline-webpage",
+    "remove:prod": "npx serverless remove --stage prod --region ap-southeast-2 --aws-profile baseline-webpage",
+    "info:staging": "npx serverless info --verbose --stage staging --region ap-southeast-2 --aws-profile baseline-webpage",
+    "info:prod": "npx serverless info --verbose --stage prod --region ap-southeast-2 --aws-profile baseline-webpage",
     "rename": "./scripts/rename.sh",
     "aws:profile": "./scripts/setup-aws-profile.sh baseline-webpage",
     "lint": "npx eslint --ext .tsx,.ts src/"
