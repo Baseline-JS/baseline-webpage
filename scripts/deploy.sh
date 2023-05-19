@@ -12,7 +12,7 @@ cd "$PARENT_PATH"
 if [ "${BITBUCKET_BRANCH:-${GITHUB_REF##*/}}" == "prod" ]; then
   npx serverless deploy --verbose --stage prod --region $AWS_REGION --param="profile=$AWS_PROFILE""
 else
-  npx serverless deploy --verbose --stage dev --region $AWS_REGION --param="profile=$AWS_PROFILE""
+  npx serverless deploy --verbose --stage staging --region $AWS_REGION --param="profile=$AWS_PROFILE""
 fi
 
 echo "Done!"

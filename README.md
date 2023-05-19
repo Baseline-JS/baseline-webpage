@@ -18,7 +18,7 @@ A simple React static site that is deployed to AWS using serverless.
 - Everything you need to start building straight away with production quality
 - Support deployment from local, Bitbucket & GitHub
 - Deploy and test ideas before you buy that perfect domain name
-- Prod, dev and local environments separated from the start
+- Prod, staging and local environments separated from the start
 
 ## Features
 
@@ -75,12 +75,12 @@ See Baseline Webpage in action
 
 ## Deploying
 
-1. `npm run deploy:dev`
-2. The output from the deploy will show `WebsiteUrl` that the site was deployed to. If you need to find it again you can run `npm run info:dev`
+1. `npm run deploy:staging`
+2. The output from the deploy will show `WebsiteUrl` that the site was deployed to. If you need to find it again you can run `npm run info:staging`
 
 ## Deploy a Change
 
-1. `npm run deploy:dev`
+1. `npm run deploy:staging`
 2. Allow some time for the Cloudfront cache invalidation to finish to see changes in browser
 
 ## Adding a Domain
@@ -93,7 +93,7 @@ See Baseline Webpage in action
 
 ## Remove Stack
 
-To destroy the deployed stack so it is no longer on AWS run `npm run remove:dev`.
+To destroy the deployed stack so it is no longer on AWS run `npm run remove:staging`.
 
 ## Environment Flag
 
@@ -122,7 +122,7 @@ If you are using the BitBucket pipeline deployment then you will need to set the
 - PROFILE = baseline-webpage
 - REGION = ap-southeast-2
 
-Optionally these can be used if dev and prod are in different accounts or the IAM roles have different access:
+Optionally these can be used if staging and prod are in different accounts or the IAM roles have different access:
 
 - PROD_AWS_ACCOUNT_ACCESS_KEY_ID = xxxx
 - PROD_AWS_ACCOUNT_SECRET_ACCESS_KEY = xxxx
