@@ -1,11 +1,5 @@
 service: baseline-webpage
 
-# Options
-# - region
-# - stage
-# Params
-# - profile
-
 frameworkVersion: '>=2.0.0 <4.0.0'
 
 plugins:
@@ -13,9 +7,8 @@ plugins:
   - serverless-cloudfront-invalidate
 
 custom:
-  s3Bucket: ${param:profile}-${opt:stage}-bsln-web-${param:bucketId}
   s3Sync:
-    - bucketName: ${self:custom.s3Bucket}
+    - bucketNameKey: S3Bucket
       localDir: build/
   cloudfrontInvalidate:
     - distributionIdKey: 'CDNDistributionId'
@@ -26,16 +19,15 @@ provider:
   name: aws
   runtime: nodejs14.x
   profile: ${param:profile} # force the profile parameter to be required
-  region: ${opt:region}
-  stage: ${opt:stage}
+  deploymentMethod: direct
+  deploymentPrefix: ${self:service}-${sls:stage}
 
 resources:
-  Description: ${param:profile} ${opt:stage}
+  Description: ${self:service} ${opt:stage}
   Resources:
-    WebsiteS3Bucket:
+    Bucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:custom.s3Bucket}
         OwnershipControls:
           Rules:
             - ObjectOwnership: BucketOwnerPreferred
@@ -45,11 +37,11 @@ resources:
           IgnorePublicAcls: false
           RestrictPublicBuckets: false
     # Add bucket policy for cloudfront access
-    WebsiteS3BucketPolicy:
+    BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
         Bucket:
-          Ref: WebsiteS3Bucket
+          Ref: Bucket
         PolicyDocument:
           Statement:
             - Sid: PublicReadGetObject
@@ -58,7 +50,11 @@ resources:
                 Service: cloudfront.amazonaws.com
               Action:
                 - s3:GetObject
-              Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+              Resource: !Join
+                - ''
+                - - 'arn:aws:s3:::'
+                  - !Ref Bucket
+                  - /*
               Condition:
                 StringEquals:
                   AWS:SourceArn:
@@ -99,8 +95,8 @@ resources:
           Enabled: true
           HttpVersion: http2
           Origins:
-            - DomainName: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
-              Id: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
+            - DomainName: !GetAtt Bucket.RegionalDomainName
+              Id: !GetAtt Bucket.RegionalDomainName
               OriginAccessControlId: !Ref WebsiteCloudFrontDistributionOriginAccessControl
               S3OriginConfig:
                 OriginAccessIdentity: ''
@@ -121,7 +117,7 @@ resources:
             Compress: true
             DefaultTTL: 1800
             MinTTL: 0
-            TargetOriginId: ${self:custom.s3Bucket}.s3.${opt:region}.amazonaws.com
+            TargetOriginId: !GetAtt Bucket.RegionalDomainName
             ForwardedValues:
               QueryString: false
               Cookies:
@@ -147,3 +143,7 @@ resources:
       Description: CDN distribution id.
       Value:
         Ref: WebsiteCloudFrontDistribution
+    S3Bucket:
+      Description: S3 Bucket
+      Value:
+        Ref: Bucket

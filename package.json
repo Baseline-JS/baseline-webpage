@@ -1,6 +1,6 @@
 {
   "name": "baseline-webpage",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/Baseline-JS/baseline-webpage"
@@ -36,12 +36,12 @@
   "scripts": {
     "build": "NODE_OPTIONS=--max_old_space_size=8192 GENERATE_SOURCEMAP=false react-scripts build",
     "start": "react-scripts start",
-    "deploy:dev": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
-    "remove:dev": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
-    "deploy:prod": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
-    "remove:prod": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
-    "info:dev": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
-    "info:prod": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\" --param=\"bucketId=bsln-bucket-id\"",
+    "deploy:dev": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "remove:dev": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "deploy:prod": "npm run build && export AWS_PROFILE=baseline-webpage && npx serverless deploy --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "remove:prod": "export AWS_PROFILE=baseline-webpage && npx serverless remove --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "info:dev": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage dev --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
+    "info:prod": "export AWS_PROFILE=baseline-webpage && npx serverless info --verbose --stage prod --region ap-southeast-2 --param=\"profile=baseline-webpage\"",
     "rename": "./scripts/rename.sh",
     "aws:profile": "./scripts/setup-aws-profile.sh baseline-webpage",
     "lint": "npx eslint --ext .tsx,.ts src/"
