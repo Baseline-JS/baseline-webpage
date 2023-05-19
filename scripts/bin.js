@@ -67,7 +67,7 @@ async function checkNodeVersion() {
     }
     console.log('Done.');
 
-    console.log('\nRenaming project');
+    console.log('\nConfiguring project');
     exec(
       `cd ${destination} && npm run rename ${projectName}`,
       (err, stdout, stderr) => {
