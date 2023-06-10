@@ -47,28 +47,29 @@
     "lint": "npx eslint --ext .tsx,.ts src/"
   },
   "dependencies": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-router-dom": "6.2.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.18",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2",
     "@typescript-eslint/eslint-plugin": "5.30.6",
     "@typescript-eslint/parser": "5.30.6",
-    "eslint": "8.19.0",
+    "@types/react": "18.2.9",
+    "@types/react-dom": "18.2.4",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
+    "eslint": "8.42.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.6.0",
-    "postcss": "8.4.16",
-    "postcss-scss": "4.0.5",
     "prettier": "2.4.1",
-    "react-scripts": "5.0.1",
-    "sass": "1.43.4",
     "serverless": "3.30.1",
     "serverless-cloudfront-invalidate": "1.12.2",
     "serverless-s3-sync": "3.1.0",
@@ -79,10 +80,8 @@
     "stylelint-config-standard": "24.0.0",
     "stylelint-config-standard-scss": "5.0.0",
     "stylelint-order": "5.0.0",
-    "typescript": "4.7.4"
-  },
-  "resolutions": {
-    "colors": "1.4.0"
+    "typescript": "4.9.5",
+    "web-vitals": "2.1.4"
   },
   "browserslist": {
     "production": [
