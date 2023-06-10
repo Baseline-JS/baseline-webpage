@@ -10,7 +10,6 @@ A simple React static site that is deployed to AWS using serverless.
 ![CDN](https://img.shields.io/badge/CDN-Cloudfront-blue?style=plastic)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic)
 ![types](https://img.shields.io/badge/types-TypeScript-blue?style=plastic)
-![stylesheets](https://img.shields.io/badge/stylesheets-SCSS-blue?style=plastic)
 
 ## Goals
 
@@ -25,13 +24,13 @@ A simple React static site that is deployed to AWS using serverless.
 - ⚡️ Serverless
 - 💰 Cost friendly - only pay for what you use
 - 🌏 Fast and global CDN with Cloudfront
-- ✨ Automatic cache invalidation (1000 free per month - [check pricing](https://aws.amazon.com/cloudfront/pricing/)) 
+- ✨ Automatic cache invalidation (1000 free per month - [check pricing](https://aws.amazon.com/cloudfront/pricing/))
 - 👉 Redirect HTTP to HTTPS
 - 🚀 Ready to use Bitbucket Pipeline and Github Action
 - ⌨️ Deploy from your local machine (optional)
 - 🤝 HTTP2 support
 - 🗜 Gzip and Brotli compression
-- 🏗 Modern tools Typescript, React, Serverless Framework, SCSS 
+- 🏗 Modern tools Typescript, React, Serverless Framework
 - 🔐 HTTPS/TLS support
 - 💻 Team Collaboration - Great for a single developer or a whole team
 - 🥞 Perfect for a Jamstack
@@ -40,6 +39,7 @@ A simple React static site that is deployed to AWS using serverless.
 - 🛣 DNS with Route53
 - ✅ Free SSL/TLS with [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/pricing/?nc=sn&loc=3) when using Route53
 - 🎬 Test new ideas quickly and single command tear down when you are done, no mess
+- 🔑 Support AWS CLI Profiles - no need to use default for everything!
 
 ## Lighthouse Scores
 
@@ -66,7 +66,7 @@ See Baseline Webpage in action
 
 ## Project Setup
 
-1. `npx baseline-webpage my-app` where `my-app` is the name of your app
+1. `npx baseline-webpage@latest my-app` where `my-app` is the name of your app
 2. `cd my-app` and `npm run aws:profile` which will configure AWS CLI with a new profile and is only required for deploying from local (if you have issues please update aws cli)
 
 ## Run Locally
