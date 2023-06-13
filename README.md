@@ -56,7 +56,7 @@ Start with a perfect score!
 
 See Baseline Webpage in action
 
-[<img width="697" alt="Demo video" src="https://user-images.githubusercontent.com/72828539/211226462-4cea6e83-9843-4927-8ffb-d92b86f15173.png">](https://youtu.be/NRoE0rNcfBM)
+[<img width="697" alt="Demo video" src="https://github-production-user-asset-6210df.s3.amazonaws.com/72828539/245375638-4a7666ea-6052-420d-a6ad-fc1157bd6d3d.png">](https://youtu.be/9CR89RysSmc)
 
 ## Local Requirements
 
